@@ -186,6 +186,10 @@ Rails.application.config.sorcery.configure do |config|
     #
     # user.password_attribute_name =
 
+    # You can use this config var in order to have scoped login by certain db field ( example: company_id)
+    # Default: `nil`
+    #
+    # user.scoped_attribute_name =
 
     # downcase the username before trying to authenticate, default is false
     # Default: `false`
@@ -203,6 +207,8 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `:crypted_password`
     #
     # user.crypted_password_attribute_name =
+
+
 
 
     # what pattern to use to join the password with the salt

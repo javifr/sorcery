@@ -35,8 +35,11 @@ module Sorcery
                                                         # method to send email related
 
 
-                    :after_config                       # an array of method names to call after configuration by user.
+                    :after_config,                       # an array of method names to call after configuration by user.
                                                         # used internally.
+
+                    :scoped_login_attribute_name       # if specifyed, and extra credential variable should be send when login() in order to have scoped login
+
 
       attr_reader   :encryption_provider,               # change default encryption_provider.
                     :custom_encryption_provider,        # use an external encryption class.
@@ -47,6 +50,7 @@ module Sorcery
           :@submodules                           => [],
           :@username_attribute_names             => [:email],
           :@password_attribute_name              => :password,
+          :@scoped_login_attribute_name          => nil,
           :@downcase_username_before_authenticating => false,
           :@email_attribute_name                 => :email,
           :@crypted_password_attribute_name      => :crypted_password,
