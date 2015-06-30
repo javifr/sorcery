@@ -67,7 +67,7 @@ module Sorcery
               relation = relation.or(condition)
             end
 
-            if !@klass.sorcery_config.scoped_login_attribute.nil?
+            if !@klass.sorcery_config.scoped_login_attribute_name.nil?
               scoped_condition = @klass.arel_table[scoped_login_attribute].eq(credentials[3])
               relation = relation.and(scoped_condition)
             end
