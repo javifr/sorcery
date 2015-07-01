@@ -70,6 +70,9 @@ module Sorcery
             if credentials[3]
               scoped_condition = @klass.arel_table["company_id"].eq(credentials[3])
               relation = relation.and(scoped_condition)
+            else
+              scoped_condition = @klass.arel_table["company_id"].eq(nil)
+              relation = relation.and(scoped_condition)
             end
 
           end
