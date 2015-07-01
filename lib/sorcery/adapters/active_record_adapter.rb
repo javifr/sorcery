@@ -67,12 +67,15 @@ module Sorcery
               relation = relation.or(condition)
             end
 
-            if credentials[3]
-              scoped_condition = @klass.arel_table["company_id"].eq(credentials[3])
-              relation = relation.and(scoped_condition)
-            else
-              scoped_condition = @klass.arel_table["company_id"].eq(nil)
-              relation = relation.and(scoped_condition)
+            if !@klass.sorcery_config.scoped_login_attribute_name.nil?
+              scoped_attribute = @klass.sorcery_config.scoped_login_attribute_name
+              if credentials[3]
+                scoped_condition = @klass.arel_table[scoped_attribute].eq(credentials[3])
+                relation = relation.and(scoped_condition)
+              else
+                scoped_condition = @klass.arel_table[scoped_attribute].eq(nil)
+                relation = relation.and(scoped_condition)
+              end
             end
 
           end
