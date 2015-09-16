@@ -97,6 +97,7 @@ module Sorcery
           @klass.find_by_id(id)
         end
 
+        # [to-do] How to manage this function when scoped_login_attribute active ?
         def find_by_username(username)
           @klass.sorcery_config.username_attribute_names.each do |attribute|
             if @klass.sorcery_config.downcase_username_before_authenticating
@@ -108,6 +109,7 @@ module Sorcery
           end
         end
 
+        # [to-do] How to manage this function when scoped_login_attribute active ?
         def find_by_email(email)
           @klass.where(@klass.sorcery_config.email_attribute_name => email).first
         end
